@@ -117,7 +117,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
+      {{-- <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
@@ -196,7 +196,8 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> --}}
+
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -224,16 +225,45 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
+
+      <!-- User Avatar -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <div class="image">
+            <img src="{{ asset('assets-admin/img/user2-160x160.jpg') }}" 
+            class="img-circle elevation-2 avatar-size" 
+            alt="User Image">
+          </div>
         </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="{{url('/profile')}}" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i> 
+            My Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" onclick="document.getElementById('logout-btn').click();">
+            <i class="fas fa-sign-out-alt mr-2"></i>
+            Log Out
+          </a>
+          <form style="display: none" method="POST" action="{{ route('logout') }}">
+              @csrf
+              <x-responsive-nav-link id="logout-btn" :href="route('logout')"
+               onclick="event.preventDefault();
+              this.closest('form').submit();">
+                  {{ __('Log Out') }}
+              </x-responsive-nav-link>
+          </form>
+          <div class="dropdown-divider"></div>
+        </div>
       </li>
-      <li class="nav-item">
+
+
+
+      {{-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </nav>
   <!-- /.navbar -->
